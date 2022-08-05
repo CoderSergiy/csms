@@ -1,12 +1,18 @@
-# csms-demo
+# CSMS
 Charging Station Management System (CSMS)
 
 The central system that manages Charge Points and has the information for authorizing users for using its Charge Points.
 
 
 ## Roadmap of the project
-The goal of the current project design demo csms system based on docker to test charge points locally or hosted by yourself.
+The goal of the current project design open-source csms system based on docker to work with charge points.
 
+Planned milestones and features:
+
+- [ ] Support OCPP 1.6
+- [ ] Support OCPP 2.0
+- [ ] System access control (different levels)
+- [ ] Payment sysytems
 
 How to Contribute
 ------
