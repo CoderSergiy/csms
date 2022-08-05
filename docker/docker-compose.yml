@@ -1,0 +1,42 @@
+version: "2"
+services:
+
+  web:
+    build: web/
+    container_name: csms_web
+    volumes:
+    - ../src:/go/csms
+    - ../src/web:/web
+    ports:
+    - "9000:8080"
+    depends_on:
+    - db
+    env_file:
+    - db.env
+    networks:
+    - csms_network
+
+  db:
+    image: mysql:latest
+    container_name: csms_db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root1
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d:ro
+    security_opt:
+      - seccomp:unconfined
+    networks:
+    - csms_network
+
+  adminer:
+    image: clue/adminer
+    container_name: csms_adminer
+    ports:
+    - "9600:80"
+    networks:
+    - csms_network
+
+networks:
+  csms_network:
+     driver: bridge
